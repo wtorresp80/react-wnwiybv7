@@ -28,12 +28,12 @@ const LogoCompleto = ({ className }) => {
   if (error) {
     return (
       <div className={`flex flex-col items-center justify-center ${className}`}>
-        <svg className="w-16 h-16 md:w-24 md:h-24 mb-2" viewBox="0 0 100 100" fill="none">
+        <svg className="w-12 h-12 md:w-16 md:h-16 mb-1" viewBox="0 0 100 100" fill="none">
           <path d="M48,5 c-12,16-24.5,33-18.5,56 c-11-13-11-34,3.5-49 C37,8,42,6,48,5z" fill={colors.lightBlue} />
           <path d="M45,52 c16-9,23.5,6.5,32,6.5 c12,0,21.5-11,21.5-11 c-6.5,18.5-24.5,31-43,34 c-21.5,3.5-43-2.5-55.5-17.5 C10,59,26,48,45,52z" fill={colors.darkBlue} />
         </svg>
         <div className="flex flex-col items-center text-center">
-          <span className="font-medium text-[12px] sm:text-[14px] md:text-lg lg:text-xl leading-none tracking-wide" style={{ color: colors.lightBlue }}>
+          <span className="font-medium text-[11px] sm:text-[13px] md:text-sm lg:text-base leading-none tracking-wide" style={{ color: colors.lightBlue }}>
             LUGAR DE <span className="font-black" style={{ color: colors.darkBlue }}>PROVISIÓN</span> Y CRECIMIENTO
           </span>
         </div>
@@ -122,13 +122,13 @@ export default function App() {
       {/* Navigation */}
       <nav className="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-sm border-b transition-all duration-300" style={{ borderColor: `${colors.grayLight}` }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Usamos padding (py-4) en lugar de altura fija para permitir que el logo determine el tamaño */}
-          <div className="flex justify-between items-center py-4 md:py-6">
+          {/* Estructura estable y correcta para el menú */}
+          <div className="flex justify-between items-center h-24 md:h-28">
             
-            {/* Logo Area (Tamaño considerablemente aumentado) */}
+            {/* Logo Area */}
             <div className="flex items-center">
-              <a href="#inicio" className="block">
-                <LogoCompleto className="h-24 sm:h-32 md:h-40 lg:h-48 w-auto object-contain max-w-[70vw] lg:max-w-none" />
+              <a href="#inicio" className="flex items-center">
+                <LogoCompleto className="h-16 sm:h-20 md:h-24 w-auto object-contain" />
               </a>
             </div>
 
@@ -176,8 +176,7 @@ export default function App() {
       </nav>
 
       {/* Hero Section */}
-      {/* Aumentado el padding top (pt-40 md:pt-56) porque la barra de navegación es más alta ahora */}
-      <section id="inicio" className="relative pt-40 pb-24 md:pt-56 md:pb-32 flex items-center min-h-[90vh]">
+      <section id="inicio" className="relative pt-32 pb-24 md:pt-32 md:pb-32 flex items-center min-h-[90vh]">
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
@@ -193,7 +192,6 @@ export default function App() {
               <Heart className="w-5 h-5" style={{ color: colors.lightBlue }} />
               Bienvenido a casa
             </div>
-            {/* Texto responsive para que no se vea minúsculo en celular */}
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1]">
               <span className="block" style={{ color: colors.darkBlue }}>Tu Lugar de</span>
               <span className="block mt-2" style={{ color: colors.lightBlue }}>Provisión</span>
@@ -219,8 +217,8 @@ export default function App() {
               </a>
             </div>
           </div>
-          {/* Logo 2: Asegurándonos de que esté visible en móviles */}
-          <div className="lg:w-2/5 mt-16 lg:mt-0 flex justify-center lg:justify-end w-full">
+          {/* Logo 2 redondo, visible 100% en celular y PC */}
+          <div className="lg:w-2/5 mt-12 lg:mt-0 flex justify-center lg:justify-end w-full">
              <div className="relative w-56 h-56 sm:w-64 sm:h-64 lg:w-80 lg:h-80 bg-white rounded-full shadow-2xl flex items-center justify-center p-8 sm:p-12 border-8" style={{ borderColor: colors.grayLight }}>
                <LogoSoloIcono className="w-full h-full object-contain" />
              </div>
