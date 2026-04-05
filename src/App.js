@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-// Íconos integrados directamente
+// Íconos integrados directamente para evitar errores de dependencias externas
 const Menu = (props) => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="18" x2="20" y2="18"></line></svg>;
 const X = (props) => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>;
 const Clock = (props) => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>;
@@ -12,6 +12,7 @@ const Facebook = (props) => <svg viewBox="0 0 24 24" fill="none" stroke="current
 const Instagram = (props) => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>;
 const Youtube = (props) => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2C5.12 19.5 12 19.5 12 19.5s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>;
 
+// Paleta de colores de la Iglesia
 const colors = {
   lightBlue: '#3ba4d8', 
   darkBlue: '#13436b',  
@@ -20,18 +21,19 @@ const colors = {
   grayDark: '#4b5563'
 };
 
+// Componente Logo Completo (Texto e Icono)
 const LogoCompleto = ({ className }) => {
   const [error, setError] = useState(false);
 
   if (error) {
     return (
       <div className={`flex flex-col items-center justify-center ${className}`}>
-        <svg className="w-10 h-10 md:w-12 md:h-12 mb-1" viewBox="0 0 100 100" fill="none">
+        <svg className="w-12 h-12 md:w-16 md:h-16 mb-1" viewBox="0 0 100 100" fill="none">
           <path d="M48,5 c-12,16-24.5,33-18.5,56 c-11-13-11-34,3.5-49 C37,8,42,6,48,5z" fill={colors.lightBlue} />
           <path d="M45,52 c16-9,23.5,6.5,32,6.5 c12,0,21.5-11,21.5-11 c-6.5,18.5-24.5,31-43,34 c-21.5,3.5-43-2.5-55.5-17.5 C10,59,26,48,45,52z" fill={colors.darkBlue} />
         </svg>
         <div className="flex flex-col items-center text-center">
-          <span className="font-medium text-[9px] sm:text-[10px] md:text-[13px] lg:text-sm leading-none tracking-wide" style={{ color: colors.lightBlue }}>
+          <span className="font-medium text-[11px] sm:text-[13px] md:text-sm lg:text-base leading-none tracking-wide" style={{ color: colors.lightBlue }}>
             LUGAR DE <span className="font-black" style={{ color: colors.darkBlue }}>PROVISIÓN</span> Y CRECIMIENTO
           </span>
         </div>
@@ -49,6 +51,7 @@ const LogoCompleto = ({ className }) => {
   );
 };
 
+// Componente Solo Icono (Para pie de página y adornos)
 const LogoSoloIcono = ({ className }) => {
   const [error, setError] = useState(false);
 
@@ -119,12 +122,13 @@ export default function App() {
       {/* Navigation */}
       <nav className="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-sm border-b transition-all duration-300" style={{ borderColor: `${colors.grayLight}` }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-28">
+          {/* Ajuste de altura responsivo para móvil y PC */}
+          <div className="flex justify-between items-center h-24 md:h-28">
             
             {/* Logo Area */}
             <div className="flex items-center">
               <a href="#inicio">
-                <LogoCompleto className="h-20 sm:h-24 object-contain" />
+                <LogoCompleto className="h-16 sm:h-20 md:h-24 object-contain" />
               </a>
             </div>
 
@@ -145,7 +149,7 @@ export default function App() {
             {/* Mobile Menu Button */}
             <div className="lg:hidden flex items-center">
               <button onClick={toggleMenu} style={{ color: colors.darkBlue }} className="p-2">
-                {isMenuOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
+                {isMenuOpen ? <X className="h-9 w-9" /> : <Menu className="h-9 w-9" />}
               </button>
             </div>
           </div>
@@ -154,12 +158,12 @@ export default function App() {
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="lg:hidden bg-white border-t shadow-lg" style={{ borderColor: colors.grayLight }}>
-            <div className="px-4 pt-2 pb-6 space-y-2">
+            <div className="px-4 pt-4 pb-6 space-y-3">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
-                  className="block px-3 py-3 rounded-lg text-base font-semibold uppercase tracking-wider bg-gray-50 active:bg-gray-100"
+                  className="block px-4 py-4 rounded-xl text-lg font-bold uppercase tracking-wider bg-gray-50 active:bg-gray-100"
                   style={{ color: colors.darkBlue }}
                   onClick={() => setIsMenuOpen(false)}
                 >
@@ -172,7 +176,8 @@ export default function App() {
       </nav>
 
       {/* Hero Section */}
-      <section id="inicio" className="relative pt-32 pb-32 flex items-center min-h-[90vh]">
+      {/* Espaciados ajustados para móviles (pt-32 pb-24) */}
+      <section id="inicio" className="relative pt-32 pb-24 md:pt-32 md:pb-32 flex items-center min-h-[90vh]">
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
@@ -183,30 +188,31 @@ export default function App() {
         </div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center w-full">
-          <div className="lg:w-3/5 space-y-8 text-center lg:text-left mt-8 lg:mt-0">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-blue-100 bg-blue-50/50 text-sm font-semibold mb-2" style={{ color: colors.darkBlue }}>
-              <Heart className="w-4 h-4" style={{ color: colors.lightBlue }} />
+          <div className="lg:w-3/5 space-y-6 md:space-y-8 text-center lg:text-left mt-10 lg:mt-0">
+            <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-blue-100 bg-blue-50/50 text-sm md:text-base font-semibold mb-2" style={{ color: colors.darkBlue }}>
+              <Heart className="w-5 h-5" style={{ color: colors.lightBlue }} />
               Bienvenido a casa
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight leading-[1.1]">
+            {/* Texto responsive para que no se vea minúsculo en celular */}
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1]">
               <span className="block" style={{ color: colors.darkBlue }}>Tu Lugar de</span>
               <span className="block mt-2" style={{ color: colors.lightBlue }}>Provisión</span>
               <span className="block mt-2" style={{ color: colors.darkBlue }}>y Crecimiento</span>
             </h1>
-            <p className="mt-6 text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-              Somos una comunidad de fe ubicada en Suba, apasionada por la presencia de Dios y dedicada a crecer juntos en amor, gracia y conocimiento biblico.
+            <p className="mt-6 text-lg sm:text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed px-2 sm:px-0">
+              Somos una comunidad de fe en Suba, apasionada por la presencia de Dios y dedicada a crecer juntos en amor, gracia y conocimiento.
             </p>
-            <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start px-4 sm:px-0">
               <a
                 href="#horarios"
-                className="px-8 py-4 text-base font-bold rounded-full text-white hover:-translate-y-1 transition-all shadow-lg hover:shadow-xl flex justify-center items-center gap-2"
+                className="w-full sm:w-auto px-8 py-4 text-base md:text-lg font-bold rounded-full text-white hover:-translate-y-1 transition-all shadow-lg hover:shadow-xl flex justify-center items-center gap-2"
                 style={{ backgroundColor: colors.lightBlue }}
               >
                 Nuestros Horarios
               </a>
               <a
                 href="#contacto"
-                className="px-8 py-4 border-2 text-base font-bold rounded-full hover:bg-gray-50 transition-all flex justify-center items-center"
+                className="w-full sm:w-auto px-8 py-4 border-2 text-base md:text-lg font-bold rounded-full hover:bg-gray-50 transition-all flex justify-center items-center"
                 style={{ borderColor: colors.darkBlue, color: colors.darkBlue }}
               >
                 Ubicación
@@ -229,7 +235,7 @@ export default function App() {
               Nuestros Horarios
             </h2>
             <div className="w-24 h-1.5 mx-auto rounded-full" style={{ backgroundColor: colors.lightBlue }}></div>
-            <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="mt-4 text-lg md:text-xl text-gray-600 max-w-2xl mx-auto px-2">
               Te esperamos en nuestras reuniones. Hay un lugar especial para ti y tu familia en cada uno de nuestros servicios.
             </p>
           </div>
@@ -249,7 +255,7 @@ export default function App() {
                 <h3 className="text-xl font-black text-center mb-3 uppercase tracking-wider" style={{ color: colors.darkBlue }}>
                   {schedule.day}
                 </h3>
-                <div className="flex items-center justify-center gap-2 mb-6 py-2 px-4 rounded-full bg-gray-50 text-base font-bold" style={{ color: colors.lightBlue }}>
+                <div className="flex items-center justify-center gap-2 mb-6 py-2 px-4 rounded-full bg-gray-50 text-sm sm:text-base font-bold" style={{ color: colors.lightBlue }}>
                   <Clock className="w-5 h-5" />
                   <span>{schedule.time}</span>
                 </div>
@@ -257,7 +263,7 @@ export default function App() {
                   <h4 className="text-lg font-bold text-center mb-3 text-gray-800">
                     {schedule.title}
                   </h4>
-                  <p className="text-gray-600 text-center text-sm leading-relaxed">
+                  <p className="text-gray-600 text-center text-sm md:text-base leading-relaxed">
                     {schedule.description}
                   </p>
                 </div>
@@ -272,25 +278,25 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row items-center gap-16">
             <div className="lg:w-1/2 w-full">
-              <div className="relative">
+              <div className="relative px-4 sm:px-0">
                 <div className="absolute inset-0 bg-blue-100 rounded-3xl transform translate-x-4 translate-y-4"></div>
                 <img 
                   src="https://images.unsplash.com/photo-1510590337019-5ef8d3d32116?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
                   alt="Comunidad" 
-                  className="relative rounded-3xl shadow-xl w-full object-cover h-[400px] lg:h-[500px]"
+                  className="relative rounded-3xl shadow-xl w-full object-cover h-[300px] md:h-[400px] lg:h-[500px]"
                 />
               </div>
             </div>
-            <div className="lg:w-1/2 space-y-8">
+            <div className="lg:w-1/2 space-y-8 px-2 sm:px-0">
               <div>
                 <h2 className="text-3xl md:text-4xl font-extrabold uppercase tracking-wide mb-4" style={{ color: colors.darkBlue }}>
                   ¿Quiénes Somos?
                 </h2>
                 <div className="w-20 h-1.5 rounded-full" style={{ backgroundColor: colors.lightBlue }}></div>
               </div>
-              <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
+              <div className="space-y-6 text-lg md:text-xl text-gray-700 leading-relaxed">
                 <p>
-                  La <strong>Iglesia Wesleyana Suba</strong> es una comunidad cristiana comprometida con el mensaje transformador del Evangelio. Nuestro nombre, <em>"Lugar de Provisión y Crecimiento"</em>, refleja nuestra visión: ser una casa donde encuentres el alimento espiritual necesario para tu vida y el ambiente ideal para desarrollar tu potencial en Cristo.
+                  La <strong>Iglesia Wesleyana Suba</strong> es una comunidad cristiana comprometida con el mensaje transformador del Evangelio. Nuestro nombre, <em>"Lugar de Provisión y Crecimiento"</em>, refleja nuestra visión.
                 </p>
                 <p>
                   Creemos firmemente en el discipulado, la adoración genuina, la oración constante y el servicio a nuestra comunidad local. ¡Nuestra familia está incompleta sin ti!
@@ -299,10 +305,10 @@ export default function App() {
               <ul className="space-y-4 mt-8 bg-gray-50 p-6 rounded-2xl">
                 {['Amor a Dios y al prójimo', 'Crecimiento espiritual constante', 'Comunidad y compañerismo', 'Servicio con excelencia'].map((value, idx) => (
                   <li key={idx} className="flex items-center gap-4">
-                    <div className="p-2 bg-white rounded-full shadow-sm">
+                    <div className="p-2 bg-white rounded-full shadow-sm shrink-0">
                       <Heart className="w-5 h-5" style={{ color: colors.lightBlue }} />
                     </div>
-                    <span className="font-semibold text-gray-800">{value}</span>
+                    <span className="font-semibold text-gray-800 text-base md:text-lg">{value}</span>
                   </li>
                 ))}
               </ul>
@@ -316,32 +322,31 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16 mb-16">
             
-            {/* Brand */}
+            {/* Brand - Recuadro Azul Claro (bg-blue-50) */}
             <div className="space-y-6">
-              {/* Recuadro con fondo azul claro para que el logo resalte */}
-              <div className="flex flex-col gap-2 bg-blue-50 p-6 rounded-2xl border border-blue-100 w-max">
-                <LogoSoloIcono className="w-16 h-16 object-contain" />
-                <h3 className="text-xl font-black mt-2 leading-tight uppercase" style={{ color: colors.lightBlue }}>
+              <div className="flex flex-col gap-2 bg-blue-50 p-6 rounded-2xl border border-blue-100 w-max mx-auto md:mx-0 items-center md:items-start text-center md:text-left">
+                <LogoSoloIcono className="w-20 h-20 md:w-16 md:h-16 object-contain" />
+                <h3 className="text-xl md:text-2xl font-black mt-2 leading-tight uppercase" style={{ color: colors.lightBlue }}>
                   Lugar de Provisión<br/>
                   <span className="text-base font-semibold" style={{ color: colors.darkBlue }}>Y Crecimiento</span>
                 </h3>
               </div>
-              <p className="text-gray-300 leading-relaxed text-sm">
+              <p className="text-gray-300 leading-relaxed text-base md:text-sm text-center md:text-left">
                 Transformando vidas a través del amor de Jesús en nuestra ciudad. Un lugar donde tu familia puede crecer.
               </p>
             </div>
 
             {/* Contact Info */}
-            <div className="space-y-6">
+            <div className="space-y-6 text-center md:text-left">
               <h4 className="text-lg font-bold uppercase tracking-wider border-b-2 inline-block pb-1" style={{ borderColor: colors.lightBlue }}>
                 Visítanos
               </h4>
               <div className="space-y-4 text-gray-300">
-                <div className="flex items-start gap-4">
-                  <div className="mt-1 p-2 bg-white/10 rounded-full">
+                <div className="flex flex-col md:flex-row items-center md:items-start gap-4">
+                  <div className="mt-1 p-2 bg-white/10 rounded-full shrink-0">
                     <MapPin className="w-5 h-5" style={{ color: colors.lightBlue }} />
                   </div>
-                  <div>
+                  <div className="text-base md:text-sm">
                     <p className="font-semibold text-white">Dirección</p>
                     <p>Cra. 99a #135-06</p>
                     <p>Suba, Bogotá, Colombia</p>
@@ -351,14 +356,14 @@ export default function App() {
             </div>
 
             {/* Socials & Links */}
-            <div className="space-y-6">
+            <div className="space-y-6 text-center md:text-left">
               <h4 className="text-lg font-bold uppercase tracking-wider border-b-2 inline-block pb-1" style={{ borderColor: colors.lightBlue }}>
                 Síguenos
               </h4>
-              <p className="text-gray-300 mb-4 text-sm">
+              <p className="text-gray-300 mb-4 text-base md:text-sm">
                 Mantente conectado con nuestras actividades, prédicas y mensajes semanales.
               </p>
-              <div className="flex gap-4">
+              <div className="flex gap-4 justify-center md:justify-start">
                 <a 
                   href="https://www.youtube.com/@iglesiaprovisionycrecimiento" 
                   target="_blank" 
