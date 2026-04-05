@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-// Íconos integrados directamente para evitar errores de StackBlitz
+// Íconos integrados directamente
 const Menu = (props) => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="18" x2="20" y2="18"></line></svg>;
 const X = (props) => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>;
 const Clock = (props) => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>;
@@ -70,6 +70,16 @@ const LogoSoloIcono = ({ className }) => {
     />
   );
 };
+
+// NUEVO: Logo especial para el pie de página (con la base blanca)
+const LogoBlancoFooter = ({ className }) => (
+  <svg className={className} viewBox="0 0 100 100" fill="none">
+    {/* Llama en azul claro */}
+    <path d="M48,5 c-12,16-24.5,33-18.5,56 c-11-13-11-34,3.5-49 C37,8,42,6,48,5z" fill={colors.lightBlue} />
+    {/* Base cambiada a color BLANCO para resaltar sobre el fondo oscuro */}
+    <path d="M45,52 c16-9,23.5,6.5,32,6.5 c12,0,21.5-11,21.5-11 c-6.5,18.5-24.5,31-43,34 c-21.5,3.5-43-2.5-55.5-17.5 C10,59,26,48,45,52z" fill="#ffffff" />
+  </svg>
+);
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -214,7 +224,6 @@ export default function App() {
             </div>
           </div>
           <div className="lg:w-2/5 mt-16 lg:mt-0 flex justify-center lg:justify-end hidden sm:flex">
-             {/* Círculo decorativo con Logo1.png en el Hero */}
              <div className="relative w-64 h-64 lg:w-80 lg:h-80 bg-white rounded-full shadow-2xl flex items-center justify-center p-12 border-8" style={{ borderColor: colors.grayLight }}>
                <LogoSoloIcono className="w-full h-full object-contain" />
              </div>
@@ -320,7 +329,8 @@ export default function App() {
             {/* Brand */}
             <div className="space-y-6">
               <div className="flex flex-col gap-2 bg-white/5 p-6 rounded-2xl border border-white/10 w-max">
-                <LogoSoloIcono className="w-16 h-16 object-contain filter brightness-110" />
+                {/* Aquí usamos el nuevo logo blanco */}
+                <LogoBlancoFooter className="w-16 h-16 object-contain" />
                 <h3 className="text-xl font-black mt-2 leading-tight uppercase" style={{ color: colors.lightBlue }}>
                   Lugar de Provisión<br/>
                   <span className="text-white text-base font-semibold">Y Crecimiento</span>
