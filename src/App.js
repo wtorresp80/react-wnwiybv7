@@ -122,13 +122,13 @@ export default function App() {
       {/* Navigation */}
       <nav className="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-sm border-b transition-all duration-300" style={{ borderColor: `${colors.grayLight}` }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Ajuste de altura responsivo para móvil y PC */}
-          <div className="flex justify-between items-center h-24 md:h-28">
+          {/* Ajuste de altura responsivo para móvil y PC (más alto para alojar un logo mayor) */}
+          <div className="flex justify-between items-center h-28 md:h-32">
             
-            {/* Logo Area */}
+            {/* Logo Area (Aumentado para celulares) */}
             <div className="flex items-center">
               <a href="#inicio">
-                <LogoCompleto className="h-16 sm:h-20 md:h-24 object-contain" />
+                <LogoCompleto className="h-20 w-auto sm:h-24 md:h-28 object-contain" />
               </a>
             </div>
 
@@ -219,8 +219,9 @@ export default function App() {
               </a>
             </div>
           </div>
-          <div className="lg:w-2/5 mt-16 lg:mt-0 flex justify-center lg:justify-end hidden sm:flex">
-             <div className="relative w-64 h-64 lg:w-80 lg:h-80 bg-white rounded-full shadow-2xl flex items-center justify-center p-12 border-8" style={{ borderColor: colors.grayLight }}>
+          {/* Logo 2: Removido el "hidden" para que se vea en celulares y ajustado el tamaño */}
+          <div className="lg:w-2/5 mt-12 lg:mt-0 flex justify-center lg:justify-end w-full">
+             <div className="relative w-56 h-56 sm:w-64 sm:h-64 lg:w-80 lg:h-80 bg-white rounded-full shadow-2xl flex items-center justify-center p-8 sm:p-12 border-8" style={{ borderColor: colors.grayLight }}>
                <LogoSoloIcono className="w-full h-full object-contain" />
              </div>
           </div>
