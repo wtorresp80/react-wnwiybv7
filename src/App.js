@@ -198,7 +198,7 @@ export default function App() {
               <span className="block mt-2" style={{ color: colors.darkBlue }}>y Crecimiento</span>
             </h1>
             <p className="mt-6 text-lg sm:text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed px-2 sm:px-0">
-              Somos una comunidad de fe ubicada en Suba, apasionada por la presencia de Dios y dedicada a crecer juntos en amor, gracia y conocimiento de la Palabra.
+              Somos una comunidad de fe, ubicada en Suba, apasionada por la presencia de Dios y dedicada a crecer juntos en amor, gracia y conocimiento de la Palabra.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start px-4 sm:px-0">
               <a
@@ -296,9 +296,6 @@ export default function App() {
               <div className="space-y-6 text-lg md:text-xl text-gray-700 leading-relaxed">
                 <p>
                   La <strong>Iglesia Lugar de Provisión y Crecimiento</strong> es una comunidad cristiana dedicada a exaltar a Jesucristo, anunciar su evangelio y formar discípulos que vivan para la gloria de Dios. Creemos que la iglesia es un refugio donde cada persona puede experimentar la <em>"Provisión del Señor"</em>, y ser edificada en la verdad de su Palabra.
-                </p>
-                <p>
-                  Como enseña la Escritura: <em>“Cristo es la cabeza de la iglesia, su cuerpo. Él es el principio, y es el primero en todo”</em> (Colosenses 1:18, NTV).
                 </p>
                 <p>
                   Nos caracterizamos por la adoración sincera, la enseñanza bíblica sólida y el acompañamiento pastoral cercano. Somos una familia espiritual abierta para niños, jóvenes y adultos que buscan conocer y seguir más profundamente a Jesús.
