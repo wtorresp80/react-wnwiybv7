@@ -194,7 +194,7 @@ export default function App() {
               <span className="block mt-2" style={{ color: colors.darkBlue }}>y Crecimiento</span>
             </h1>
             <p className="mt-6 text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-              Somos una comunidad de fe en Suba, apasionada por la presencia de Dios y dedicada a crecer juntos en amor, gracia y conocimiento.
+              Somos una comunidad de fe ubicada en Suba, apasionada por la presencia de Dios y dedicada a crecer juntos en amor, gracia y conocimiento biblico.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <a
