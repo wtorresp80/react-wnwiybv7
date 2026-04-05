@@ -295,10 +295,10 @@ export default function App() {
               </div>
               <div className="space-y-6 text-lg md:text-xl text-gray-700 leading-relaxed">
                 <p>
-                  La <strong>Iglesia Wesleyana Suba</strong> es una comunidad cristiana comprometida con el mensaje transformador del Evangelio. Nuestro nombre, <em>"Lugar de Provisión y Crecimiento"</em>, refleja nuestra visión.
+                  La <strong>Lugar de Provisión y Crecimiento</strong> es una comunidad cristiana dedicada a exaltar a Jesucristo, anunciar su evangelio y formar discípulos que vivan para la gloria de Dios. Creemos que la iglesia es un refugio donde cada persona puede experimentar la <em>"provisión del Señor"</em>, y ser edificada en la verdad de su Palabra.
                 </p>
                 <p>
-                  Creemos firmemente en el discipulado, la adoración genuina, la oración constante y el servicio a nuestra comunidad local. ¡Nuestra familia está incompleta sin ti!
+                  Nos caracterizamos por la adoración sincera, la enseñanza bíblica sólida y el acompañamiento pastoral cercano. Somos una familia espiritual abierta para niños, jóvenes y adultos que buscan conocer y seguir más profundamente a Jesús.
                 </p>
               </div>
               <ul className="space-y-4 mt-8 bg-gray-50 p-6 rounded-2xl">
