@@ -71,16 +71,6 @@ const LogoSoloIcono = ({ className }) => {
   );
 };
 
-// NUEVO: Logo especial para el pie de página (con la base blanca)
-const LogoBlancoFooter = ({ className }) => (
-  <svg className={className} viewBox="0 0 100 100" fill="none">
-    {/* Llama en azul claro */}
-    <path d="M48,5 c-12,16-24.5,33-18.5,56 c-11-13-11-34,3.5-49 C37,8,42,6,48,5z" fill={colors.lightBlue} />
-    {/* Base cambiada a color BLANCO para resaltar sobre el fondo oscuro */}
-    <path d="M45,52 c16-9,23.5,6.5,32,6.5 c12,0,21.5-11,21.5-11 c-6.5,18.5-24.5,31-43,34 c-21.5,3.5-43-2.5-55.5-17.5 C10,59,26,48,45,52z" fill="#ffffff" />
-  </svg>
-);
-
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -328,12 +318,12 @@ export default function App() {
             
             {/* Brand */}
             <div className="space-y-6">
-              <div className="flex flex-col gap-2 bg-white/5 p-6 rounded-2xl border border-white/10 w-max">
-                {/* Aquí usamos el nuevo logo blanco */}
-                <LogoBlancoFooter className="w-16 h-16 object-contain" />
+              {/* Recuadro con fondo azul claro para que el logo resalte */}
+              <div className="flex flex-col gap-2 bg-blue-50 p-6 rounded-2xl border border-blue-100 w-max">
+                <LogoSoloIcono className="w-16 h-16 object-contain" />
                 <h3 className="text-xl font-black mt-2 leading-tight uppercase" style={{ color: colors.lightBlue }}>
                   Lugar de Provisión<br/>
-                  <span className="text-white text-base font-semibold">Y Crecimiento</span>
+                  <span className="text-base font-semibold" style={{ color: colors.darkBlue }}>Y Crecimiento</span>
                 </h3>
               </div>
               <p className="text-gray-300 leading-relaxed text-sm">
