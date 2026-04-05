@@ -341,18 +341,28 @@ export default function App() {
                 Visítanos
               </h4>
               <div className="space-y-4 text-gray-300">
-                <div className="flex flex-col md:flex-row items-center md:items-start gap-4">
-                  <div className="mt-1 p-2 bg-white/10 rounded-full shrink-0">
+                <a 
+                  href="https://www.google.com/maps/search/?api=1&query=Cra.+99a+%23135-06,+Suba,+Bogotá,+Colombia" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex flex-col md:flex-row items-center md:items-start gap-4 hover:opacity-80 transition-opacity group cursor-pointer"
+                  title="Abrir en Google Maps"
+                >
+                  <div className="mt-1 p-2 bg-white/10 rounded-full shrink-0 group-hover:bg-white/20 transition-colors">
                     <MapPin className="w-5 h-5" style={{ color: colors.lightBlue }} />
                   </div>
-                  <div className="text-base md:text-sm">
-                    <p className="font-semibold text-white">Dirección</p>
+                  <div className="text-base md:text-sm text-center md:text-left">
+                    <p className="font-semibold text-white group-hover:underline">Dirección</p>
                     <p>Cra. 99a #135-06</p>
                     <p>Suba, Bogotá, Colombia</p>
+                    <p className="text-xs mt-1 font-semibold transition-colors" style={{ color: colors.lightBlue }}>
+                      Ver en Google Maps &rarr;
+                    </p>
                   </div>
-                </div>
+                </a>
               </div>
             </div>
+            
 
             {/* Socials & Links */}
             <div className="space-y-6 text-center md:text-left">
