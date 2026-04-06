@@ -380,7 +380,6 @@ export default function App() {
               </div>
             </div>
 
-
             {/* Socials & Links */}
             <div className="space-y-6 text-center md:text-left">
               <h4 className="text-lg font-bold uppercase tracking-wider border-b-2 inline-block pb-1" style={{ borderColor: colors.lightBlue }}>
