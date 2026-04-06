@@ -199,7 +199,7 @@ export default function App() {
               <span className="block mt-2" style={{ color: colors.darkBlue }}>y Crecimiento</span>
             </h1>
             <p className="mt-6 text-lg sm:text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed px-2 sm:px-0">
-              Somos una comunidad de fe en Suba, apasionada por la presencia de Dios y dedicada a crecer juntos en amor, gracia y conocimiento.
+              Somos una comunidad de fe, ubicada en Suba, apasionada por la presencia de Dios y dedicada a crecer juntos en amor, gracia y conocimiento.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start px-4 sm:px-0">
               <a
@@ -296,11 +296,10 @@ export default function App() {
               </div>
               <div className="space-y-6 text-lg md:text-xl text-gray-700 leading-relaxed">
                 <p>
-                  La <strong>Iglesia Wesleyana Suba</strong> es una comunidad cristiana comprometida con el mensaje transformador del Evangelio. Nuestro nombre, <em>"Lugar de Provisión y Crecimiento"</em>, refleja nuestra visión.
+                  La <strong>Iglesia Lugar de Provisión y Crecimiento</strong> es una comunidad cristiana dedicada a exaltar a Jesucristo, anunciar su evangelio y formar discípulos que vivan para la gloria de Dios. Creemos que la iglesia es un refugio donde cada persona puede experimentar <em>"La Provisión del Señor"</em>, y ser edificada en la verdad de su Palabra.
                 </p>
                 <p>
-                  Creemos firmemente en el discipulado, la adoración genuina, la oración constante y el servicio a nuestra comunidad local. ¡Nuestra familia está incompleta sin ti!
-                </p>
+                  Nos caracterizamos por la adoración sincera, la enseñanza bíblica sólida y el acompañamiento pastoral cercano. Somos una familia espiritual abierta para niños, jóvenes y adultos que buscan conocer y seguir más profundamente a Jesús.                </p>
               </div>
               <ul className="space-y-4 mt-8 bg-gray-50 p-6 rounded-2xl">
                 {['Amor a Dios y al prójimo', 'Crecimiento espiritual constante', 'Comunidad y compañerismo', 'Servicio con excelencia'].map((value, idx) => (
