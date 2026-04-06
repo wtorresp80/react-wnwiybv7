@@ -362,7 +362,24 @@ export default function App() {
                 </a>
               </div>
             </div>
-            
+
+                {/* Nuevo bloque de correo electrónico */}
+                <a 
+                  href="mailto:provision@wesleyansuba.org" 
+                  className="flex flex-col md:flex-row items-center md:items-start gap-4 hover:opacity-80 transition-opacity group cursor-pointer pt-2"
+                  title="Enviar correo electrónico"
+                >
+                  <div className="mt-1 p-2 bg-white/10 rounded-full shrink-0 group-hover:bg-white/20 transition-colors">
+                    <Mail className="w-5 h-5" style={{ color: colors.lightBlue }} />
+                  </div>
+                  <div className="text-base md:text-sm text-center md:text-left">
+                    <p className="font-semibold text-white group-hover:underline">Correo Electrónico</p>
+                    <p>provision@wesleyansuba.org</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+
 
             {/* Socials & Links */}
             <div className="space-y-6 text-center md:text-left">
