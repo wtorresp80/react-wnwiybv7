@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 // Íconos integrados directamente para evitar errores de dependencias externas
 const Menu = (props) => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="18" x2="20" y2="18"></line></svg>;
@@ -77,6 +77,21 @@ const LogoSoloIcono = ({ className }) => {
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showCookieBanner, setShowCookieBanner] = useState(false);
+  const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
+
+  // Verificar si el usuario ya aceptó las cookies previamente
+  useEffect(() => {
+    const consent = localStorage.getItem('cookieConsent');
+    if (!consent) {
+      setShowCookieBanner(true);
+    }
+  }, []);
+
+  const acceptCookies = () => {
+    localStorage.setItem('cookieConsent', 'true');
+    setShowCookieBanner(false);
+  };
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
@@ -119,11 +134,72 @@ export default function App() {
   ];
 
   return (
-    <div className="min-h-screen font-sans selection:bg-blue-100" style={{ backgroundColor: colors.white }}>
+    <div className="min-h-screen font-sans selection:bg-blue-100 relative" style={{ backgroundColor: colors.white }}>
+      
+      {/* Componente Modal de Políticas de Privacidad */}
+      {isPrivacyModalOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+          <div className="bg-white rounded-2xl w-full max-w-3xl max-h-[85vh] flex flex-col shadow-2xl overflow-hidden animate-fade-in-up">
+            <div className="p-6 border-b border-gray-200 flex justify-between items-center bg-gray-50">
+              <h3 className="text-xl md:text-2xl font-bold" style={{ color: colors.darkBlue }}>Políticas de Privacidad y Cookies</h3>
+              <button onClick={() => setIsPrivacyModalOpen(false)} className="p-2 hover:bg-gray-200 rounded-full transition-colors">
+                <X className="w-6 h-6" style={{ color: colors.darkBlue }} />
+              </button>
+            </div>
+            <div className="p-6 md:p-8 overflow-y-auto text-gray-700 space-y-6 text-sm md:text-base">
+              <p>
+                En la <strong>Iglesia Wesleyana Suba - Lugar de Provisión y Crecimiento</strong> valoramos su privacidad y nos comprometemos a proteger sus datos personales de acuerdo con la legislación vigente en Colombia (Ley Estatutaria 1581 de 2012).
+              </p>
+              
+              <div>
+                <h4 className="font-bold text-lg mb-2" style={{ color: colors.darkBlue }}>1. Uso de Cookies</h4>
+                <p>
+                  Este sitio web utiliza "cookies" técnicas estrictamente necesarias para el correcto funcionamiento de la página y para mejorar su experiencia de navegación. No utilizamos cookies para rastreo publicitario invasivo ni vendemos su información a terceros. Al continuar navegando, usted acepta el uso de estas cookies.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="font-bold text-lg mb-2" style={{ color: colors.darkBlue }}>2. Recopilación y Uso de Datos Personales</h4>
+                <p>
+                  Si usted se pone en contacto con nosotros a través de nuestros correos electrónicos, líneas telefónicas o redes sociales, la información proporcionada (como nombre, correo o teléfono) será tratada con absoluta confidencialidad. Estos datos se utilizarán exclusivamente para:
+                </p>
+                <ul className="list-disc pl-5 mt-2 space-y-1">
+                  <li>Responder a sus peticiones, dudas o solicitudes de oración.</li>
+                  <li>Proveer información sobre los horarios, eventos y actividades de la iglesia.</li>
+                  <li>Mantener contacto pastoral y apoyo espiritual si así lo requiere.</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="font-bold text-lg mb-2" style={{ color: colors.darkBlue }}>3. Sus Derechos</h4>
+                <p>
+                  Como titular de los datos, usted tiene derecho a conocer, actualizar, rectificar o solicitar la eliminación de su información de nuestras bases de datos en cualquier momento.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="font-bold text-lg mb-2" style={{ color: colors.darkBlue }}>4. Contacto</h4>
+                <p>
+                  Para ejercer sus derechos o resolver cualquier duda sobre estas políticas, puede comunicarse con nosotros enviando un mensaje a <strong>provision@wesleyansuba.org</strong>.
+                </p>
+              </div>
+            </div>
+            <div className="p-4 border-t border-gray-200 flex justify-end bg-gray-50">
+              <button 
+                onClick={() => setIsPrivacyModalOpen(false)} 
+                className="px-8 py-3 rounded-full text-white font-bold hover:opacity-90 transition-opacity" 
+                style={{ backgroundColor: colors.lightBlue }}
+              >
+                Entendido y Cerrar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Navigation */}
       <nav className="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-sm border-b transition-all duration-300" style={{ borderColor: `${colors.grayLight}` }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Estructura estable y correcta para el menú */}
           <div className="flex justify-between items-center h-24 md:h-28">
             
             {/* Logo Area */}
@@ -218,7 +294,6 @@ export default function App() {
               </a>
             </div>
           </div>
-          {/* Logo 2 redondo, visible 100% en celular y PC */}
           <div className="lg:w-2/5 mt-12 lg:mt-0 flex justify-center lg:justify-end w-full">
              <div className="relative w-56 h-56 sm:w-64 sm:h-64 lg:w-80 lg:h-80 bg-white rounded-full shadow-2xl flex items-center justify-center p-8 sm:p-12 border-8" style={{ borderColor: colors.grayLight }}>
                <LogoSoloIcono className="w-full h-full object-contain" />
@@ -299,7 +374,8 @@ export default function App() {
                   La <strong>Iglesia Lugar de Provisión y Crecimiento</strong> es una comunidad cristiana dedicada a exaltar a Jesucristo, anunciar su evangelio y formar discípulos que vivan para la gloria de Dios. Creemos que la iglesia es un refugio donde cada persona puede experimentar <em>"La Provisión del Señor"</em>, y ser edificada en la verdad de su Palabra.
                 </p>
                 <p>
-                  Nos caracterizamos por la adoración sincera, la enseñanza bíblica sólida y el acompañamiento pastoral cercano. Somos una familia espiritual abierta para niños, jóvenes y adultos que buscan conocer y seguir más profundamente a Jesús.                </p>
+                  Nos caracterizamos por la adoración sincera, la enseñanza bíblica sólida y el acompañamiento pastoral cercano. Somos una familia espiritual abierta para niños, jóvenes y adultos que buscan conocer y seguir más profundamente a Jesús.
+                </p>
               </div>
               <ul className="space-y-4 mt-8 bg-gray-50 p-6 rounded-2xl">
                 {['Amor a Dios y al prójimo', 'Crecimiento espiritual constante', 'Comunidad y compañerismo', 'Servicio con excelencia'].map((value, idx) => (
@@ -317,11 +393,11 @@ export default function App() {
       </section>
 
       {/* Footer / Contact */}
-      <footer id="contacto" className="text-white pt-20 pb-8" style={{ backgroundColor: colors.darkBlue }}>
+      <footer id="contacto" className="text-white pt-20 pb-8 relative" style={{ backgroundColor: colors.darkBlue }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16 mb-16">
             
-            {/* Brand - Recuadro Azul Claro (bg-blue-50) */}
+            {/* Brand - Recuadro Azul Claro */}
             <div className="space-y-6">
               <div className="flex flex-col gap-2 bg-blue-50 p-6 rounded-2xl border border-blue-100 w-max mx-auto md:mx-0 items-center md:items-start text-center md:text-left">
                 <LogoSoloIcono className="w-20 h-20 md:w-16 md:h-16 object-contain" />
@@ -335,12 +411,13 @@ export default function App() {
               </p>
             </div>
 
-            {/* Contact Info */}
+            {/* Contact Info con Mailto y Google Maps */}
             <div className="space-y-6 text-center md:text-left">
               <h4 className="text-lg font-bold uppercase tracking-wider border-b-2 inline-block pb-1" style={{ borderColor: colors.lightBlue }}>
-                Visítanos
+                Visítanos y Contáctanos
               </h4>
-              <div className="space-y-4 text-gray-300">
+              <div className="space-y-6 text-gray-300">
+                {/* Botón Mapa */}
                 <a 
                   href="https://www.google.com/maps/search/?api=1&query=Cra.+99a+%23135-06,+Suba,+Bogotá,+Colombia" 
                   target="_blank" 
@@ -361,10 +438,10 @@ export default function App() {
                   </div>
                 </a>
 
-                {/* Nuevo bloque de correo electrónico */}
+                {/* Botón Email */}
                 <a 
                   href="mailto:provision@wesleyansuba.org" 
-                  className="flex flex-col md:flex-row items-center md:items-start gap-4 hover:opacity-80 transition-opacity group cursor-pointer pt-2"
+                  className="flex flex-col md:flex-row items-center md:items-start gap-4 hover:opacity-80 transition-opacity group cursor-pointer pt-2 border-t border-white/10"
                   title="Enviar correo electrónico"
                 >
                   <div className="mt-1 p-2 bg-white/10 rounded-full shrink-0 group-hover:bg-white/20 transition-colors">
@@ -372,7 +449,7 @@ export default function App() {
                   </div>
                   <div className="text-base md:text-sm text-center md:text-left">
                     <p className="font-semibold text-white group-hover:underline">Correo Electrónico</p>
-                    <p>provision@wesleyansuba.org</p>
+                    <p className="break-all">provision@wesleyansuba.org</p>
                   </div>
                 </a>
               </div>
@@ -422,12 +499,41 @@ export default function App() {
 
           </div>
           
-          <div className="border-t pt-8 mt-8 text-center flex flex-col md:flex-row justify-between items-center gap-4 text-gray-400 text-sm" style={{ borderColor: 'rgba(255,255,255,0.1)' }}>
-            <p>&copy; {new Date().getFullYear()} Iglesia Wesleyana Suba. Todos los derechos reservados.</p>
-            <p className="text-xs uppercase tracking-widest">Lugar de Provisión y Crecimiento</p>
+          <div className="border-t pt-8 mt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-gray-400 text-sm" style={{ borderColor: 'rgba(255,255,255,0.1)' }}>
+            <p className="text-center md:text-left">&copy; {new Date().getFullYear()} Iglesia Wesleyana Suba. Todos los derechos reservados.</p>
+            <div className="flex flex-col md:flex-row items-center gap-2 md:gap-6">
+              <button onClick={() => setIsPrivacyModalOpen(true)} className="hover:text-white transition-colors underline decoration-white/30 underline-offset-4">
+                Políticas de Privacidad
+              </button>
+              <p className="text-xs uppercase tracking-widest hidden md:block">|</p>
+              <p className="text-xs uppercase tracking-widest text-center md:text-right">Lugar de Provisión y Crecimiento</p>
+            </div>
           </div>
         </div>
       </footer>
+
+      {/* Banner Fijo de Cookies */}
+      {showCookieBanner && (
+        <div className="fixed bottom-0 left-0 right-0 bg-white shadow-[0_-10px_20px_-5px_rgba(0,0,0,0.1)] z-[90] p-4 md:p-6 border-t" style={{ borderColor: colors.grayLight }}>
+          <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 md:gap-8">
+            <div className="text-sm md:text-base text-gray-700 text-center md:text-left flex-1">
+              <strong>Aviso de Cookies:</strong> Utilizamos cookies para mejorar su experiencia en nuestro sitio web. Al continuar navegando, consideramos que acepta nuestra{' '}
+              <button onClick={() => setIsPrivacyModalOpen(true)} className="font-bold underline hover:opacity-80 transition-opacity" style={{ color: colors.lightBlue }}>
+                Política de Privacidad y Cookies
+              </button>.
+            </div>
+            <div className="w-full md:w-auto shrink-0">
+              <button 
+                onClick={acceptCookies} 
+                className="w-full md:w-auto px-8 py-3 text-white rounded-full font-bold shadow-md hover:-translate-y-1 transition-all"
+                style={{ backgroundColor: colors.darkBlue }}
+              >
+                Aceptar y Continuar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
