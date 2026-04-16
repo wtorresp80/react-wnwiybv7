@@ -12,6 +12,7 @@ const BookOpen = (props) => <svg viewBox="0 0 24 24" fill="none" stroke="current
 const Facebook = (props) => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>;
 const Instagram = (props) => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>;
 const Youtube = (props) => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2C5.12 19.5 12 19.5 12 19.5s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>;
+const Gift = (props) => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg>;
 
 // Paleta de colores de la Iglesia
 const colors = {
@@ -42,10 +43,11 @@ const LogoCompleto = ({ className }) => {
     );
   }
 
+  // Se eliminó la palabra "Logo" del alt para mejorar el SEO en Google
   return (
     <img
       src="logo iglesia en azules.png"
-      alt="Logo Iglesia Wesleyana Suba"
+      alt="Iglesia Wesleyana Suba"
       className={className}
       onError={() => setError(true)}
     />
@@ -68,7 +70,7 @@ const LogoSoloIcono = ({ className }) => {
   return (
     <img
       src="Logo1.png"
-      alt="Icono Iglesia Wesleyana"
+      alt="Iglesia Wesleyana Suba"
       className={className}
       onError={() => setError(true)}
     />
@@ -79,6 +81,7 @@ export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showCookieBanner, setShowCookieBanner] = useState(false);
   const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
+  const [isDonationModalOpen, setIsDonationModalOpen] = useState(false);
 
   // Verificar si el usuario ya aceptó las cookies previamente
   useEffect(() => {
@@ -136,6 +139,63 @@ export default function App() {
   return (
     <div className="min-h-screen font-sans selection:bg-blue-100 relative" style={{ backgroundColor: colors.white }}>
       
+      {/* Componente Modal de DONACIONES */}
+      {isDonationModalOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+          <div className="bg-white rounded-2xl w-full max-w-lg flex flex-col shadow-2xl overflow-hidden animate-fade-in-up">
+            <div className="p-6 border-b border-gray-200 flex justify-between items-center bg-blue-50">
+              <div className="flex items-center gap-3">
+                <Gift className="w-6 h-6" style={{ color: colors.lightBlue }} />
+                <h3 className="text-xl md:text-2xl font-bold" style={{ color: colors.darkBlue }}>Donaciones</h3>
+              </div>
+              <button onClick={() => setIsDonationModalOpen(false)} className="p-2 hover:bg-gray-200 rounded-full transition-colors">
+                <X className="w-6 h-6" style={{ color: colors.darkBlue }} />
+              </button>
+            </div>
+            <div className="p-6 md:p-8 text-gray-700 space-y-6">
+              <p className="text-center text-lg font-medium" style={{ color: colors.darkBlue }}>
+                "Cada uno dé como propuso en su corazón: no con tristeza, ni por necesidad, porque Dios ama al dador alegre." <br/>
+                <span className="text-sm font-normal text-gray-500">2 Corintios 9:7</span>
+              </p>
+              
+              <div className="bg-gray-50 p-4 rounded-xl border border-gray-200 space-y-3">
+                <h4 className="font-bold text-lg mb-2 border-b pb-2">Cuentas Bancarias Oficiales</h4>
+                
+                <div className="flex justify-between items-center text-sm md:text-base">
+                  <span className="font-semibold">Banco:</span>
+                  <span>Bancolombia</span>
+                </div>
+                <div className="flex justify-between items-center text-sm md:text-base">
+                  <span className="font-semibold">Tipo de Cuenta:</span>
+                  <span>Ahorros</span>
+                </div>
+                <div className="flex justify-between items-center text-sm md:text-base">
+                  <span className="font-semibold">Número:</span>
+                  <span className="font-mono bg-white px-2 py-1 rounded border">000-000000-00</span>
+                </div>
+                <div className="flex justify-between items-center text-sm md:text-base pt-2">
+                  <span className="font-semibold">A nombre de:</span>
+                  <span className="text-right">Iglesia Wesleyana Suba<br/><span className="text-xs text-gray-500">NIT: 800.000.000-0</span></span>
+                </div>
+              </div>
+
+              <p className="text-sm text-gray-500 text-center">
+                Para solicitar un certificado de donación, por favor envía el comprobante de tu transferencia a nuestro correo oficial.
+              </p>
+            </div>
+            <div className="p-4 border-t border-gray-200 flex justify-center bg-gray-50">
+              <button 
+                onClick={() => setIsDonationModalOpen(false)} 
+                className="px-8 py-3 rounded-full text-white font-bold hover:opacity-90 transition-opacity w-full" 
+                style={{ backgroundColor: colors.lightBlue }}
+              >
+                Cerrar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Componente Modal de Políticas de Privacidad */}
       {isPrivacyModalOpen && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
@@ -161,11 +221,12 @@ export default function App() {
               <div>
                 <h4 className="font-bold text-lg mb-2" style={{ color: colors.darkBlue }}>2. Recopilación y Uso de Datos Personales</h4>
                 <p>
-                  Si usted se pone en contacto con nosotros a través de nuestros correos electrónicos, líneas telefónicas o redes sociales, la información proporcionada (como nombre, correo o teléfono) será tratada con absoluta confidencialidad. Estos datos se utilizarán exclusivamente para:
+                  Si usted se pone en contacto con nosotros o realiza aportes financieros (diezmos o donaciones), la información proporcionada (como nombre, correo, teléfono o identificación) será tratada con absoluta confidencialidad. Estos datos se utilizarán exclusivamente para:
                 </p>
                 <ul className="list-disc pl-5 mt-2 space-y-1">
                   <li>Responder a sus peticiones, dudas o solicitudes de oración.</li>
                   <li>Proveer información sobre los horarios, eventos y actividades de la iglesia.</li>
+                  <li>Gestión contable, administrativa y emisión de certificados de donación requeridos por ley.</li>
                   <li>Mantener contacto pastoral y apoyo espiritual si así lo requiere.</li>
                 </ul>
               </div>
@@ -210,7 +271,7 @@ export default function App() {
             </div>
 
             {/* Desktop Menu */}
-            <div className="hidden lg:flex space-x-8">
+            <div className="hidden lg:flex items-center space-x-8">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
@@ -221,12 +282,30 @@ export default function App() {
                   {link.name}
                 </a>
               ))}
+              {/* BOTÓN DONAR EN DESKTOP */}
+              <button 
+                onClick={() => setIsDonationModalOpen(true)}
+                className="px-5 py-2 rounded-full text-white text-sm font-bold shadow-md hover:-translate-y-0.5 transition-all flex items-center gap-2"
+                style={{ backgroundColor: colors.lightBlue }}
+              >
+                <Gift className="w-4 h-4" />
+                DONAR
+              </button>
             </div>
 
             {/* Mobile Menu Button */}
-            <div className="lg:hidden flex items-center">
+            <div className="lg:hidden flex items-center gap-4">
+               {/* BOTÓN DONAR EN MÓVIL */}
+              <button 
+                onClick={() => setIsDonationModalOpen(true)}
+                className="px-4 py-2 rounded-full text-white text-sm font-bold shadow-md active:scale-95 transition-all flex items-center gap-2"
+                style={{ backgroundColor: colors.lightBlue }}
+              >
+                <Gift className="w-4 h-4" />
+                DONAR
+              </button>
               <button onClick={toggleMenu} style={{ color: colors.darkBlue }} className="p-2">
-                {isMenuOpen ? <X className="h-9 w-9" /> : <Menu className="h-9 w-9" />}
+                {isMenuOpen ? <X className="h-8 w-8" /> : <Menu className="h-8 w-8" />}
               </button>
             </div>
           </div>
@@ -397,7 +476,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16 mb-16">
             
-            {/* Brand - Recuadro Azul Claro */}
+            {/* Brand */}
             <div className="space-y-6">
               <div className="flex flex-col gap-2 bg-blue-50 p-6 rounded-2xl border border-blue-100 w-max mx-auto md:mx-0 items-center md:items-start text-center md:text-left">
                 <LogoSoloIcono className="w-20 h-20 md:w-16 md:h-16 object-contain" />
@@ -411,13 +490,12 @@ export default function App() {
               </p>
             </div>
 
-            {/* Contact Info con Mailto y Google Maps */}
+            {/* Contact Info */}
             <div className="space-y-6 text-center md:text-left">
               <h4 className="text-lg font-bold uppercase tracking-wider border-b-2 inline-block pb-1" style={{ borderColor: colors.lightBlue }}>
                 Visítanos y Contáctanos
               </h4>
               <div className="space-y-6 text-gray-300">
-                {/* Botón Mapa */}
                 <a 
                   href="https://www.google.com/maps/search/?api=1&query=Cra.+99a+%23135-06,+Suba,+Bogotá,+Colombia" 
                   target="_blank" 
@@ -438,7 +516,6 @@ export default function App() {
                   </div>
                 </a>
 
-                {/* Botón Email */}
                 <a 
                   href="mailto:provision@wesleyansuba.org" 
                   className="flex flex-col md:flex-row items-center md:items-start gap-4 hover:opacity-80 transition-opacity group cursor-pointer pt-2 border-t border-white/10"
