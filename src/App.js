@@ -171,7 +171,7 @@ export default function App() {
                 </div>
                 <div className="flex justify-between items-center text-sm md:text-base">
                   <span className="font-semibold">Número:</span>
-                  <span className="font-mono bg-white px-2 py-1 rounded border">573 499 82325</span>
+                  <span className="font-mono bg-white px-2 py-1 rounded border">573 499823 25</span>
                 </div>
                 <div className="flex justify-between items-center text-sm md:text-base pt-2">
                   <span className="font-semibold">A nombre de:</span>
