@@ -171,11 +171,11 @@ export default function App() {
                 </div>
                 <div className="flex justify-between items-center text-sm md:text-base">
                   <span className="font-semibold">Número:</span>
-                  <span className="font-mono bg-white px-2 py-1 rounded border">000-000000-00</span>
+                  <span className="font-mono bg-white px-2 py-1 rounded border">573 499 82325</span>
                 </div>
                 <div className="flex justify-between items-center text-sm md:text-base pt-2">
                   <span className="font-semibold">A nombre de:</span>
-                  <span className="text-right">Iglesia Wesleyana Suba<br/><span className="text-xs text-gray-500">NIT: 800.000.000-0</span></span>
+                  <span className="text-right">Iglesia Wesleyana Distrito C<br/><span className="text-xs text-gray-500">NIT: 900302800</span></span>
                 </div>
               </div>
 
