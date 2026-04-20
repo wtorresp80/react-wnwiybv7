@@ -158,24 +158,31 @@ export default function App() {
                 <span className="text-sm font-normal text-gray-500">2 Corintios 9:7</span>
               </p>
               
-              <div className="bg-gray-50 p-4 rounded-xl border border-gray-200 space-y-3">
-                <h4 className="font-bold text-lg mb-2 border-b pb-2">Cuentas Bancarias Oficiales</h4>
+              <div className="bg-gray-50 p-4 rounded-xl border border-gray-200 space-y-4">
+                <h4 className="font-bold text-lg border-b pb-2 text-center" style={{ color: colors.darkBlue }}>Aporte con Código QR</h4>
                 
-                <div className="flex justify-between items-center text-sm md:text-base">
-                  <span className="font-semibold">Banco:</span>
-                  <span>Bancolombia</span>
+                <div className="flex justify-center">
+                  {/* Imagen del código QR */}
+                  <img 
+                    src="qr-bancolombia.jpeg" 
+                    alt="Código QR Bancolombia Iglesia Wesleyana" 
+                    className="w-full max-w-[250px] object-contain rounded-xl shadow-sm border border-gray-200"
+                  />
                 </div>
-                <div className="flex justify-between items-center text-sm md:text-base">
-                  <span className="font-semibold">Tipo de Cuenta:</span>
-                  <span>Ahorros</span>
-                </div>
-                <div className="flex justify-between items-center text-sm md:text-base">
-                  <span className="font-semibold">Número:</span>
-                  <span className="font-mono bg-white px-2 py-1 rounded border">573 499823 25</span>
-                </div>
-                <div className="flex justify-between items-center text-sm md:text-base pt-2">
-                  <span className="font-semibold">A nombre de:</span>
-                  <span className="text-right">Iglesia Wesleyana Distrito C<br/><span className="text-xs text-gray-500">NIT: 900302800</span></span>
+
+                <div className="pt-3 border-t border-gray-200 space-y-2">
+                  <div className="flex justify-between items-center text-sm md:text-base">
+                    <span className="font-semibold">Llave Bancolombia:</span>
+                    <span className="font-mono bg-white px-2 py-1 rounded border border-gray-300">0090866521</span>
+                  </div>
+                  <div className="flex justify-between items-center text-sm md:text-base">
+                    <span className="font-semibold">A nombre de:</span>
+                    <span className="text-right">Iglesia Wesleyana Distrito C</span>
+                  </div>
+                  <div className="flex justify-between items-center text-sm md:text-base">
+                    <span className="font-semibold">NIT:</span>
+                    <span>900302800</span>
+                  </div>
                 </div>
               </div>
 
