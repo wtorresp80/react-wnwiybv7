@@ -142,8 +142,9 @@ export default function App() {
       {/* Componente Modal de DONACIONES */}
       {isDonationModalOpen && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-          <div className="bg-white rounded-2xl w-full max-w-lg flex flex-col shadow-2xl overflow-hidden animate-fade-in-up">
-            <div className="p-6 border-b border-gray-200 flex justify-between items-center bg-blue-50">
+          {/* Se agregó max-h-[85vh] para limitar la altura en celulares */}
+          <div className="bg-white rounded-2xl w-full max-w-lg max-h-[85vh] flex flex-col shadow-2xl overflow-hidden animate-fade-in-up">
+            <div className="p-4 sm:p-6 border-b border-gray-200 flex justify-between items-center bg-blue-50 shrink-0">
               <div className="flex items-center gap-3">
                 <Gift className="w-6 h-6" style={{ color: colors.lightBlue }} />
                 <h3 className="text-xl md:text-2xl font-bold" style={{ color: colors.darkBlue }}>Donaciones</h3>
@@ -152,48 +153,52 @@ export default function App() {
                 <X className="w-6 h-6" style={{ color: colors.darkBlue }} />
               </button>
             </div>
-            <div className="p-6 md:p-8 text-gray-700 space-y-6">
-              <p className="text-center text-lg font-medium" style={{ color: colors.darkBlue }}>
+            
+            {/* Se agregó overflow-y-auto para que el contenido central se pueda deslizar (scroll) si no cabe */}
+            <div className="p-4 sm:p-6 md:p-8 overflow-y-auto text-gray-700 space-y-4 sm:space-y-6">
+              <p className="text-center text-base sm:text-lg font-medium" style={{ color: colors.darkBlue }}>
                 "Cada uno dé como propuso en su corazón: no con tristeza, ni por necesidad, porque Dios ama al dador alegre." <br/>
-                <span className="text-sm font-normal text-gray-500">2 Corintios 9:7</span>
+                <span className="text-xs sm:text-sm font-normal text-gray-500">2 Corintios 9:7</span>
               </p>
               
-              <div className="bg-gray-50 p-4 rounded-xl border border-gray-200 space-y-4">
-                <h4 className="font-bold text-lg border-b pb-2 text-center" style={{ color: colors.darkBlue }}>Aporte con Código QR</h4>
+              <div className="bg-gray-50 p-3 sm:p-4 rounded-xl border border-gray-200 space-y-4">
+                <h4 className="font-bold text-base sm:text-lg border-b pb-2 text-center" style={{ color: colors.darkBlue }}>Aporte con Código QR</h4>
                 
                 <div className="flex justify-center">
                   {/* Imagen del código QR */}
                   <img 
                     src="qr-bancolombia.jpeg" 
                     alt="Código QR Bancolombia Iglesia Wesleyana" 
-                    className="w-full max-w-[250px] object-contain rounded-xl shadow-sm border border-gray-200"
+                    className="w-full max-w-[200px] sm:max-w-[250px] object-contain rounded-xl shadow-sm border border-gray-200"
                   />
                 </div>
 
                 <div className="pt-3 border-t border-gray-200 space-y-2">
-                  <div className="flex justify-between items-center text-sm md:text-base">
+                  <div className="flex justify-between items-center text-xs sm:text-base">
                     <span className="font-semibold">Llave Bancolombia:</span>
                     <span className="font-mono bg-white px-2 py-1 rounded border border-gray-300">0090866521</span>
                   </div>
-                  <div className="flex justify-between items-center text-sm md:text-base">
+                  <div className="flex justify-between items-center text-xs sm:text-base">
                     <span className="font-semibold">A nombre de:</span>
                     <span className="text-right">Iglesia Wesleyana Distrito C</span>
                   </div>
-                  <div className="flex justify-between items-center text-sm md:text-base">
+                  <div className="flex justify-between items-center text-xs sm:text-base">
                     <span className="font-semibold">NIT:</span>
                     <span>900302800</span>
                   </div>
                 </div>
               </div>
 
-              <p className="text-sm text-gray-500 text-center">
+              <p className="text-xs sm:text-sm text-gray-500 text-center">
                 Para solicitar un certificado de donación, por favor envía el comprobante de tu transferencia a nuestro correo oficial.
               </p>
             </div>
-            <div className="p-4 border-t border-gray-200 flex justify-center bg-gray-50">
+            
+            {/* Pie del modal fijo con el botón cerrar */}
+            <div className="p-4 border-t border-gray-200 flex justify-center bg-gray-50 shrink-0">
               <button 
                 onClick={() => setIsDonationModalOpen(false)} 
-                className="px-8 py-3 rounded-full text-white font-bold hover:opacity-90 transition-opacity w-full" 
+                className="px-8 py-2.5 sm:py-3 rounded-full text-white font-bold hover:opacity-90 transition-opacity w-full" 
                 style={{ backgroundColor: colors.lightBlue }}
               >
                 Cerrar
