@@ -162,7 +162,7 @@ export default function App() {
               </p>
               
               <div className="bg-gray-50 p-3 sm:p-4 rounded-xl border border-gray-200 space-y-4">
-                <h4 className="font-bold text-base sm:text-lg border-b pb-2 text-center" style={{ color: colors.darkBlue }}>Aporte con Código QR</h4>
+                <h4 className="font-bold text-base sm:text-lg border-b pb-2 text-center" style={{ color: colors.darkBlue }}>Transferencia o Código QR</h4>
                 
                 <div className="flex justify-center">
                   <img 
@@ -174,12 +174,25 @@ export default function App() {
 
                 <div className="pt-3 border-t border-gray-200 space-y-2">
                   <div className="flex justify-between items-center text-xs sm:text-base">
+                    <span className="font-semibold">Banco:</span>
+                    <span>Bancolombia</span>
+                  </div>
+                  <div className="flex justify-between items-center text-xs sm:text-base">
+                    <span className="font-semibold">Tipo de Cuenta:</span>
+                    <span>Ahorros</span>
+                  </div>
+                  <div className="flex justify-between items-center text-xs sm:text-base">
+                    <span className="font-semibold">Número de Cuenta:</span>
+                    <span className="font-mono bg-white px-2 py-1 rounded border border-gray-300">57349982325</span>
+                  </div>
+                  
+                  <div className="flex justify-between items-center text-xs sm:text-base pt-2 mt-2 border-t border-gray-100">
                     <span className="font-semibold">Llave Bancolombia:</span>
                     <span className="font-mono bg-white px-2 py-1 rounded border border-gray-300">0090866521</span>
                   </div>
                   <div className="flex justify-between items-center text-xs sm:text-base">
                     <span className="font-semibold">A nombre de:</span>
-                    <span className="text-right">Iglesia Wesleyana Distrito C</span>
+                    <span className="text-right">Iglesia Wesleyana Distrito Central</span>
                   </div>
                   <div className="flex justify-between items-center text-xs sm:text-base">
                     <span className="font-semibold">NIT:</span>
