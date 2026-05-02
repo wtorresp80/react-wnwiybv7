@@ -13,7 +13,7 @@ const Facebook = (props) => <svg viewBox="0 0 24 24" fill="none" stroke="current
 const Instagram = (props) => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>;
 const Youtube = (props) => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2C5.12 19.5 12 19.5 12 19.5s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>;
 const Gift = (props) => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg>;
-const Target = (props) => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><circle cx="1TargetTarget2" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>;
+const Target = (props) => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>;
 const Compass = (props) => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>;
 
 // Paleta de colores de la Iglesia
@@ -134,7 +134,9 @@ export default function App() {
       time: '5:00 PM',
       title: 'Reunión de Jóvenes',
       description: 'Un tiempo dinámico y lleno de energía para que los jóvenes conecten con su propósito.',
-      icon: <Users className="w-8 h-8" style={{ color: colors.lightBlue }} />
+      icon: <Users className="w-8 h-8" style={{ color: colors.lightBlue }} />,
+      // Enlace a la página de jóvenes
+      action: { url: 'https://firegeneration.wesleyansuba.org', label: 'Visitar Fire Generation ➔' }
     }
   ];
 
@@ -356,7 +358,30 @@ export default function App() {
                 <div className="flex justify-center mb-6"><div className="p-5 rounded-2xl" style={{ backgroundColor: `${colors.lightBlue}15` }}>{schedule.icon}</div></div>
                 <h3 className="text-xl font-black text-center mb-3 uppercase tracking-wider" style={{ color: colors.darkBlue }}>{schedule.day}</h3>
                 <div className="flex items-center justify-center gap-2 mb-6 py-2 px-4 rounded-full bg-gray-50 text-sm sm:text-base font-bold" style={{ color: colors.lightBlue }}><Clock className="w-5 h-5" /><span>{schedule.time}</span></div>
-                <div className="flex-grow"><h4 className="text-lg font-bold text-center mb-3 text-gray-800">{schedule.title}</h4><p className="text-gray-600 text-center text-sm md:text-base leading-relaxed">{schedule.description}</p></div>
+                
+                {/* Bloque flex-grow actualizado para soportar el enlace de la tarjeta */}
+                <div className="flex-grow flex flex-col">
+                  <h4 className="text-lg font-bold text-center mb-3 text-gray-800">
+                    {schedule.title}
+                  </h4>
+                  <p className="text-gray-600 text-center text-sm md:text-base leading-relaxed flex-grow">
+                    {schedule.description}
+                  </p>
+                  {/* Este código dibuja el enlace solo si la tarjeta tiene uno */}
+                  {schedule.action && (
+                    <div className="mt-4 text-center pt-4 border-t border-gray-100">
+                      <a 
+                        href={schedule.action.url} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="inline-block text-sm md:text-base font-bold transition-all hover:-translate-y-0.5 hover:opacity-80" 
+                        style={{ color: colors.lightBlue }}
+                      >
+                        {schedule.action.label}
+                      </a>
+                    </div>
+                  )}
+                </div>
               </div>
             ))}
           </div>
@@ -412,8 +437,8 @@ export default function App() {
                 <span className="font-bold uppercase tracking-widest text-sm" style={{ color: colors.darkBlue }}>Misión</span>
               </div>
               <div className="mt-4 text-center space-y-6">
-                <p className="text-lg md:text-xl text-gray-700 leading-relaxed italic">
-                  "Guiar a las personas a una relación genuina con Dios, supliendo sus necesidades espirituales a través de la palabra, la oración, y la comunidad; acompañándolas en el proceso de crecimiento integral que transforme sus vidas, desarrollando carácter, propósito y servicio."
+                <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
+                  Guiar a las personas a una relación genuina con Dios, supliendo sus necesidades espirituales a través de la palabra, la oración, y la comunidad; acompañándolas en el proceso de crecimiento integral que transforme sus vidas, desarrollando carácter, propósito y servicio.
                 </p>
                 {/* Pilares de Misión inspirados en el cuadro */}
                 <div className="grid grid-cols-2 gap-4 pt-6 border-t border-gray-100">
