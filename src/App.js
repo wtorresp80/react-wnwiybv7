@@ -438,7 +438,7 @@ export default function App() {
               </div>
               <div className="mt-4 text-center space-y-6">
                 <p className="text-lg md:text-xl text-gray-700 leading-relaxed italic">
-                  Guiar a las personas a una relación genuina con Dios, supliendo sus necesidades espirituales a través de la palabra, la oración, y la comunidad; acompañándolas en el proceso de crecimiento integral que transforme sus vidas, desarrollando carácter, propósito y servicio.
+                  "Guiar a las personas a una relación genuina con Dios, supliendo sus necesidades espirituales a través de la palabra, la oración, y la comunidad; acompañándolas en el proceso de crecimiento integral que transforme sus vidas, desarrollando carácter, propósito y servicio."
                 </p>
                 {/* Pilares de Misión inspirados en el cuadro */}
                 <div className="grid grid-cols-2 gap-4 pt-6 border-t border-gray-100">
